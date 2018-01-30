@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Actors</title>
+</head>
+<body>
+<h2>All my actors</h2>
+<ul>
+	{% for actor in actors %}
+	<li>{{actor.first_name}} {{actor.last_name}} - <a href="/actors/{{actor.id}}">View Profile</a></li>
+	{% endfor %}
+</ul>
+<fieldset>
+<legend>Add a actor</legend>
+<form action="/actors/create" method="POST">
+	{% csrf_token%}
+	<input type="text" name="first_name" placeholder="first">
+	<input type="text" name="last_name" placeholder="last">
+	<input type="date" name="dob" placeholder="dob">
+	<input type="submit">
+</form>
+</fieldset>
+</body>
+</html>

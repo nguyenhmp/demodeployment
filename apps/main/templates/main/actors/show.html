@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>{{actor.first_name}} </p>
+<p>{{actor.last_name}} </p>
+<p>{{actor.dob}}</p>
+<ul>
+	{% for feature in features %}
+	<li>{{feature.movie.title}}</li>
+	{% endfor %}
+</ul>
+<h3>Add me to a film</h3>
+<form action="/actors/add_to_film/{{actor.id}}" method="POST">
+{% csrf_token %}
+	<select name="movie">
+		{% for movie in movies %}
+		<option value="{{movie.id}}">{{movie.title}}</option>
+		{% endfor %}
+	</select>
+	<input type="submit">
+</form>
+</body>
+</html>

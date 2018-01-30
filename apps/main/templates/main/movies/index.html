@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movies</title>
+</head>
+<body>
+<h2>All my movies</h2>
+<ul>
+	{% for movie in movies %}
+	<li>{{movie.title}}</li>
+	{% endfor %}
+</ul>
+<fieldset>
+<legend>Add a movie</legend>
+<form action="/movies/create" method="POST">
+	{% csrf_token%}
+	<input type="text" name="title" placeholder="title">
+	<input type="submit">
+</form>
+</fieldset>
+</body>
+</html>
